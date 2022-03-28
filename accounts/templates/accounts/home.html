@@ -1,0 +1,19 @@
+{% extends 'accounts/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+  Home
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-grid">
+    <h1 class="text-center m-4">Hi, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</h1>
+    <a href="{% url 'me' %}" class="mx-5 btn btn-info mb-3">Download Resume in PDF</a>
+    <a href="{% url 'edit' %}" class="mx-5 btn btn-primary mb-3">Edit account info</a>
+    <a href="{% url 'logout' %}" class="text-center" type="submit">Logout</a>
+  </div>
+
+{% endblock %}

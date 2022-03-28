@@ -1,0 +1,32 @@
+{% extends 'accounts/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Edit{% endblock %}
+
+{% block header %}
+Edit account
+{% endblock %}
+
+{% block content %}
+
+  <form class="d-grid" action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='floating'%}
+
+    {% if links %}Links:{% endif %}
+    {% for link in links %}
+      <a class="mb-3" href="{% url 'links' link.id %}">{{ link.get_type_display }}</a>
+    {% endfor %}
+    <a href="{% url 'link_add' %}" class="btn btn-secondary mb-3">Add link</a>
+
+    {% if status %}Status:{% endif %}
+    {% for stat in status %}
+      <a class="mb-3" href="{% url 'statuses' stat.id %}">{{ stat.title }}</a>
+    {% endfor %}
+    <a href="{% url 'status_add' %}" class="btn btn-secondary mb-3">Add current status</a>
+
+    <button class="btn btn-primary mb-3" type="submit">Save</button>
+    <a href="{% url 'home' %}" class="text-center" type="submit">Cancel</a>
+  </form>
+
+{% endblock %}

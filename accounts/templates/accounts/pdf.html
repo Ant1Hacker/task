@@ -1,0 +1,110 @@
+<html lang="en">
+<body>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+
+<div class="container">
+  <div class="header">
+    <div class="full-name">
+      <span class="first-name">{{ user.first_name }}</span>
+      <span class="last-name">{{ user.last_name }}</span>
+    </div>
+    <div class="contact-info">
+      <span class="email">Email: </span>
+      <span class="email-val">{{ user.email }}</span>
+      <span class="separator"></span>
+      <span class="phone">Phone: </span>
+      <span class="phone-val">{{ user.phone }}</span>
+    </div>
+
+    <div class="about">
+      <span class="position">{{ user.profile }} </span>
+      <span class="desc">
+        {{ user.achievements }}
+      </span>
+    </div>
+  </div>
+
+<div class="details">
+  <div class="section">
+    <div class="section__list">
+      <div class="section__list-item">
+        <div class="left">
+          <div class="name">Languages:</div>
+          {% for language in user.languages.all %}
+          <div class="text">{{ language }}</div>
+        {% endfor %}
+          <br>
+        </div>
+        <div class="right">
+          <div class="name">Region:</div>
+          <div class="addr">{{ user.region }}</div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="details">
+    <div class="section">
+      {% for history in user.history.all %}
+
+        <div class="section__title">{{ history.get_type_display }}</div>
+        <div class="section__list">
+          <div class="section__list-item">
+            <div class="left">
+              <div class="name">{{ history.title }}</div>
+              <div class="addr">{{ history.description }}</div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <div class="section__title">Skills:</div>
+      <div class="skills">
+        <div class="skills__item">
+          <div class="left">
+            <div class="name">
+              {{ user.skills }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="section">
+      <div class="section__title">
+        Hobbies:
+      </div>
+      <div class="section__list">
+        <div class="section__list-item">
+          {{ user.hobbies }}
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section__title">Me in social network:</div>
+      {% for link in user.links.all %}
+
+
+        <div class="section__list">
+          <div class="section__list-item">
+            <div class="left">
+              <div class="name">{{ link.get_type_display }}</div>
+              <div class="addr">{{ link.link }}</div>
+              <br>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

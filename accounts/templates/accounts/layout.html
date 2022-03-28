@@ -1,0 +1,31 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}HR{% endblock %}</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+
+    <div class="col-md-4 p-4 rounded-3 mt-5 mb-5 bg-light">
+      <h2 class="text-center">
+        {% block header %}
+          <!-- header -->
+        {% endblock %}
+      </h2>
+
+      {% block content %}
+        <!-- content -->
+      {% endblock %}
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

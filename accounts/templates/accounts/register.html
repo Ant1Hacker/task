@@ -1,0 +1,19 @@
+{% extends 'accounts/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Register{% endblock %}
+
+{% block header %}
+Sign-Up
+{% endblock %}
+
+{% block content %}
+
+  <form class="d-grid" action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='floating'%}
+    <button class="btn btn-primary mb-3" type="submit">Register</button>
+    <a href="{% url 'login' %}" class="text-center" type="submit">Login here</a>
+  </form>
+
+{% endblock %}
